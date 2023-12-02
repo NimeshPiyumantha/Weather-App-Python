@@ -4,6 +4,17 @@
 
 ![alt text](https://github.com/NimeshPiyumantha/Weather-App-Python/blob/master/assets/Screenshot.png)
 
+### Creation of virtual environments
+```
+python -m venv venv
+```
+
+### Go to virtual environments
+```
+.\venv\Scripts\Activate.ps1        
+```
+
+### install libs
 ```
 pip install pytz
 pip install geopy
