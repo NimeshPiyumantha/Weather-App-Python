@@ -2,13 +2,13 @@
 
 ### Python Tkinter Project
 
-## 
 ![alt text](https://github.com/NimeshPiyumantha/Weather-App-Python/blob/master/assets/Screenshot.png)
 
 ```
 pip install pytz
 pip install geopy
 pip install timezonefinder
+pip install requests
 ```
 
 ### Clone this repository ✅
