@@ -6,6 +6,20 @@ from timezonefinder import TimezoneFinder
 from datetime import datetime
 import requests
 import pytz
+from dotenv import load_dotenv
+import os
+
+# Load environment variables from .env file
+load_dotenv()
+
+# Get the OpenWeatherMap API key from the environment variables
+api_key = os.getenv("WEATHER_API_KEY")
+
+# Check if the API key is available
+if not api_key:
+    print("Error: OpenWeatherMap API key not found in the .env file.")
+else:
+    print("OpenWeatherMap API key loaded successfully.")
 
 root=Tk()
 root.title("Weather App")
@@ -15,7 +29,7 @@ root.resizable(False,False)
 def getWether():
         try:
                 city=textfield.get()
-                
+
                 geolocator=Nominatim(user_agent="nimmaZ-weather-app")
                 location=geolocator.geocode(city)
                 obj=TimezoneFinder()
@@ -28,9 +42,9 @@ def getWether():
                 name.config(text="CURRENT WEATHER")
 
                 #weather
-                api="https://api.openweathermap.org/data/2.5/weather?q="+city+"&appid=f85b5bd8a72b35456680ed64a5dcbee1"
+                api = f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}"
+                json_data = requests.get(api).json()
 
-                json_data=requests.get(api).json()
                 condition=json_data['weather'][0]['main']
                 description=json_data['weather'][0]['description']
                 temp=int(json_data['main']['temp']-273.15)
